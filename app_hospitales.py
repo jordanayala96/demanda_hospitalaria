@@ -12,9 +12,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 ###### 1. Configuración de la página ######
-st.set_page_config(page_title="Sistema de Alerta Hospitalaria IA", layout="wide")
+st.set_page_config(page_title="Sistema de Alerta Hospitalaria", layout="wide")
 st.title("🏥 Sistema de Alerta Temprana de Saturación Hospitalaria")
-st.markdown("**Desarrollado con Arquitectura LSTM | Distrito Metropolitano de Quito (2024)**")
+st.markdown("**Desarrollado con Arquitectura LSTM para el Distrito Metropolitano de Quito (2024)**")
 st.markdown("---")
 
 ###### 2. Cargar los datos predichos ######
@@ -27,7 +27,7 @@ def cargar_datos():
 df_escenarios = cargar_datos()
 
 ###### 3. Interfaz Lateral (Sidebar) para interacción ######
-st.sidebar.header("🕹️ Panel de Control")
+st.sidebar.header("Panel de Control")
 fecha_seleccionada = st.sidebar.date_input(
     "Seleccione una fecha de evaluación:",
     min_value=df_escenarios['Fecha'].min().date(),
@@ -53,12 +53,12 @@ if not dato_dia.empty:
     elif riesgo == 'Alerta Amarilla':
         st.warning(f"🟠 Estado del Sistema: {riesgo} (Cerca del Límite)")
     else:
-        st.error(f"🔴 Estado del Sistema: {riesgo} (Colapso Inminente)")
+        st.error(f"🔴 Estado del Sistema: {riesgo} (Colapso)")
 
 st.markdown("---")
 
 ###### 5. Gráfico Principal Interactivo ######
-st.subheader("📈 Curva de Demanda y Umbrales Críticos")
+st.subheader("📈 Curva de Demanda y Umbrales")
 
 fig, ax = plt.subplots(figsize=(12, 4))
 sns.set_theme(style="whitegrid")
@@ -81,4 +81,4 @@ plt.xticks(rotation=45)
 
 st.pyplot(fig)
 
-st.markdown("*Modelo de Deep Learning implementado para optimización de recursos en salud pública.*")
+st.markdown("*Modelo de Deep Learning implementado para la optimización de recursos en salud pública.*")
